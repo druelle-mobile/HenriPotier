@@ -3,6 +3,23 @@
 This project is my personal interpretation of a Xebia's exercise in a 
 recruitment's process. as Android Developper.
 
+*See statements below*
+
+## About exercise
+
+* MVVM Pattern (will implement DataBinding)
+* Android Arch Components
+    * Navigation
+    * Lifecycle - LiveData & ViewModel
+    * Room
+* Retrofit
+* RxJava2 - RxAndroid
+* Koin
+* Stetho
+* SonarQube
+* Picasso
+* Lottie
+
 ## Statement
 
 > Once upon a time, there was a collection of **seven** books telling the 
