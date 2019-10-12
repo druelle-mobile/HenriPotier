@@ -52,6 +52,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.1.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Android Architecture Components
     // Navigation
@@ -59,9 +60,6 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$NAVIGATION_VERSION"
     // Room
     implementation "androidx.room:room-runtime:$ROOM_VERSION"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     kapt "androidx.room:room-compiler:$ROOM_VERSION"
     implementation "androidx.room:room-ktx:$ROOM_VERSION"
     // LiveData & ViewModel
@@ -69,7 +67,17 @@ dependencies {
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
+
+    // RxJava2
+    implementation "io.reactivex.rxjava2:rxjava:$RXJAVA2_VERSION"
+    implementation "io.reactivex.rxjava2:rxandroid:$RXANDROID_VERSION"
+
+    // Koin
+    implementation "org.koin:koin-core:$KOIN_VERSION"
+    implementation "org.koin:koin-android:$KOIN_VERSION"
+    implementation "org.koin:koin-androidx-viewmodel:$KOIN_VERSION"
 
     // Stetho
     implementation "com.facebook.stetho:stetho:$STETHO_VERSION"
@@ -92,8 +100,6 @@ sonarqube {
         property "sonar.host.url", ext.SONAR_LOCALHOST
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.login", ext.SONAR_LOGIN
-
-        //I added these properties to my gradle.build
         property "sonar.projectVersion", android.defaultConfig.versionName
         property "sonar.sources", ['src/main']
         property "sonar.exclusions", ['src/test/*', 'src/androidTest/*']
