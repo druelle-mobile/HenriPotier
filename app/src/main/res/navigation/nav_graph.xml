@@ -12,7 +12,11 @@
         tools:layout="@layout/splash_screen_fragment" >
         <action
             android:id="@+id/action_splashScreenFragment_to_booksFragment"
-            app:destination="@id/booksFragment" />
+            app:destination="@id/booksFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@+id/splashScreenFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -22,13 +26,25 @@
         tools:layout="@layout/books_fragment" >
         <action
             android:id="@+id/action_booksFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_booksFragment_to_informationsFragment"
-            app:destination="@id/informationsFragment" />
+            app:destination="@id/informationsFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_up"
+            app:popEnterAnim="@anim/slide_in_down"
+            app:popExitAnim="@anim/slide_out_down" />
         <action
             android:id="@+id/action_booksFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -38,10 +54,18 @@
         tools:layout="@layout/cart_fragment" >
         <action
             android:id="@+id/action_cartFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_cartFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/informationsFragment"

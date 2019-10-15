@@ -1,7 +1,9 @@
 package ovh.geoffrey_druelle.henripotier.ui.splashScreen
 
-import androidx.lifecycle.ViewModel
+import ovh.geoffrey_druelle.henripotier.HenriPotierApplication
+import ovh.geoffrey_druelle.henripotier.base.BaseViewModel
 
-class SplashScreenViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class SplashScreenViewModel : BaseViewModel() {
+
+    var version: String = HenriPotierApplication.instance.getVersionNumber()
 }

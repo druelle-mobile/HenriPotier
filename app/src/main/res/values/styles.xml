@@ -30,12 +30,13 @@
 
     <style name="SummaryStyle" >
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/text12</item>
+        <item name="android:textSize">@dimen/text14</item>
+        <item name="android:padding">@dimen/padding8</item>
     </style>
 
     <style name="PriceStyle" >
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/text14</item>
+        <item name="android:textSize">@dimen/text18</item>
         <item name="android:textStyle">bold|italic</item>
     </style>
 
