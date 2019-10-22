@@ -45,13 +45,6 @@ class BooksAdapter(var books: List<Book> = listOf(), private val booksViewModel:
     }
 
     inner class BooksViewHolder(view: View): RecyclerView.ViewHolder(view) {
-//    inner class BooksViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
         val binding: ItemBookBinding = DataBindingUtil.bind(view)!!
-
-//        override fun onClick(view: View) {
-//            val position: Int = layoutPosition
-//        }
     }
 }
-
-

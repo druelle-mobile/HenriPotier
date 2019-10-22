@@ -4,11 +4,11 @@
     <item
         android:id="@+id/see_cart"
         android:title="@string/see_cart"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:icon="@drawable/ic_shopping_cart_white_24dp"
         app:showAsAction="always"/>
     <item
         android:id="@+id/about"
         android:title="A propos"
-        android:icon="@drawable/ic_info_black_24dp"
+        android:icon="@drawable/ic_info_white_24dp"
         app:showAsAction="always"/>
 </menu>

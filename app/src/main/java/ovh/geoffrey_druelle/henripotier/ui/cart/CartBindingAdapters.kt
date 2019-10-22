@@ -1,33 +1,30 @@
-package ovh.geoffrey_druelle.henripotier.ui.books
+package ovh.geoffrey_druelle.henripotier.ui.cart
 
-import android.text.TextUtils
-import android.widget.AutoCompleteTextView
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import ovh.geoffrey_druelle.henripotier.data.model.Book
+import ovh.geoffrey_druelle.henripotier.data.model.Cart
 
-@BindingAdapter(value = ["booksList","booksViewModel"], requireAll = false)
+@BindingAdapter(value = ["cartList","cartViewModel"], requireAll = false)
 fun setRecyclerViewSource(
     recyclerView: RecyclerView,
-    list: List<Book>,
-    viewModel: BooksViewModel
+    list: List<Cart>,
+    viewModel: CartViewModel
 ) {
     recyclerView.adapter?.run {
-        if (this is BooksAdapter) {
-            this.books = list
+        if (this is CartAdapter) {
+            this.cart = list
             this.notifyDataSetChanged()
         }
     } ?: run {
-        BooksAdapter(list, viewModel).apply {
+        CartAdapter(list, viewModel).apply {
             recyclerView.adapter = this
         }
     }
 }
 
-@BindingAdapter("coverBooks")
+@BindingAdapter("coverCart")
 fun setCover(imageView: ImageView, url: String){
     Picasso.get().load(url).resize(200,300).onlyScaleDown().into(imageView)
 }

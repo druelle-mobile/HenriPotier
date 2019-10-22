@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="datacontext"
             type="ovh.geoffrey_druelle.henripotier.ui.books.BooksViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/booksListLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.books.BooksFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_books"
-            items="@{datacontext.books}"
-            viewModel="@{datacontext}"
+            booksList="@{datacontext.books}"
+            booksViewModel="@{datacontext}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/padding16"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_book"/>
         <!--            itemLayout="@{@layout/item_book}"-->

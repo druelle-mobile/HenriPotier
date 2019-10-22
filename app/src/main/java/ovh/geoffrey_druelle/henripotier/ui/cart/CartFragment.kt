@@ -1,12 +1,16 @@
 package ovh.geoffrey_druelle.henripotier.ui.cart
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import ovh.geoffrey_druelle.henripotier.R
+import ovh.geoffrey_druelle.henripotier.databinding.CartFragmentBinding
 
 
 class CartFragment : Fragment() {
@@ -15,19 +19,32 @@ class CartFragment : Fragment() {
         fun newInstance() = CartFragment()
     }
 
-    private lateinit var viewModel: CartViewModel
+    private lateinit var cartViewModel: CartViewModel
+    private lateinit var cartBinding: CartFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.cart_fragment, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CartViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        cartBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.cart_fragment,
+            container,
+            false
+        )
 
+        cartViewModel = getViewModel()
+        cartBinding.datacontext = cartViewModel
+        cartBinding.lifecycleOwner = this
+
+        cartViewModel.bookRemoved.observe(this, Observer { bookRemoved ->
+            if (bookRemoved){
+                Snackbar.make(requireView(),R.string.book_removed, Snackbar.LENGTH_SHORT).show()
+                cartViewModel.bookRemoved()
+            }
+        })
+
+        return cartBinding.root
+    }
 }

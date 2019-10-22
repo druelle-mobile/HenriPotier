@@ -9,4 +9,10 @@
     <string name="see_cart">Voir votre panier</string>
     <string name="quit">Fermer</string>
     <string name="price_in_euros">%1$d €</string>
+    <string name="book_removed">Livre supprimé du panier</string>
+    <string name="book_added">Livre ajouté au panier</string>
+    <string name="pay">Paiement</string>
+    <string name="price_before_reduces">Total avant remise : %1$d €</string>
+    <string name="reduces_total">Remises : %1$d €</string>
+    <string name="price_after_reduces">Total remisé final : %1$d €</string>
 </resources>

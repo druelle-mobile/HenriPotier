@@ -2,12 +2,22 @@ package ovh.geoffrey_druelle.henripotier.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "Books")
 data class Book(
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     val isbn: String,
+    @ColumnInfo(name = "title")
     val title: String,
+    @ColumnInfo(name = "price")
     val price: Int,
+    @ColumnInfo(name = "cover")
     val cover: String,
+    @ColumnInfo(name = "synopsis")
     val synopsis: List<String>
 ) : Parcelable {
     constructor(parcel: Parcel) : this(

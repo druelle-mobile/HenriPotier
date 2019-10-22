@@ -4,8 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
 import com.facebook.stetho.Stetho
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import ovh.geoffrey_druelle.henripotier.injection.appModule
+import ovh.geoffrey_druelle.henripotier.injection.getModules
 
 private val TAG = HenriPotierApplication::class.java.name
 
@@ -24,8 +25,9 @@ class HenriPotierApplication : Application() {
         Stetho.initializeWithDefaults(appContext)
 
         startKoin {
-            appContext
-            modules(appModule)
+            androidContext(this@HenriPotierApplication)
+//            modules(appModule)
+            modules(getModules())
         }
     }
 
