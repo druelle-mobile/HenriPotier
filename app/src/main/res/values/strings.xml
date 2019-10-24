@@ -15,4 +15,7 @@
     <string name="price_before_reduces">Total avant remise : %1$d €</string>
     <string name="reduces_total">Remises : %1$d €</string>
     <string name="price_after_reduces">Total remisé final : %1$d €</string>
+    <string name="gd">Geoffrey Druelle</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
 </resources>

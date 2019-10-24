@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:visibility="@{datacontext.isEmpty ? View.GONE : View.VISIBLE}">
 
-            <com.airbnb.lottie.LottieAnimationView
+                       <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/imageview_empty_cart"
                 android:layout_width="150dp"
                 android:layout_height="150dp"

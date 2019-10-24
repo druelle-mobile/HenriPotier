@@ -24,6 +24,11 @@ class SplashScreenFragment : Fragment() {
     private lateinit var viewModel: SplashScreenViewModel
     private lateinit var binding: SplashScreenFragmentBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.actionBar?.hide()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

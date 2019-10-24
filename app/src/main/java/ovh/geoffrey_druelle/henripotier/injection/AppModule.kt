@@ -13,6 +13,7 @@ import ovh.geoffrey_druelle.henripotier.network.HPApi
 import ovh.geoffrey_druelle.henripotier.ui.bookDetails.BookDetailsViewModel
 import ovh.geoffrey_druelle.henripotier.ui.books.BooksViewModel
 import ovh.geoffrey_druelle.henripotier.ui.cart.CartViewModel
+import ovh.geoffrey_druelle.henripotier.ui.infos.InformationsViewModel
 import ovh.geoffrey_druelle.henripotier.ui.splashScreen.SplashScreenViewModel
 import ovh.geoffrey_druelle.henripotier.utils.BASE_URL
 import retrofit2.Retrofit
@@ -34,6 +35,7 @@ val appModule = module {
     viewModel { BooksViewModel(api = get()) }
     viewModel { BookDetailsViewModel() }
     viewModel { CartViewModel(api = get()) }
+    viewModel { InformationsViewModel() }
 }
 
 fun getModules(): List<Module>{

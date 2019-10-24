@@ -2,6 +2,7 @@ package ovh.geoffrey_druelle.henripotier.ui.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -26,8 +27,9 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
 
-        cartBinding = DataBindingUtil.inflate(
+    cartBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.cart_fragment,
             container,
@@ -40,11 +42,21 @@ class CartFragment : Fragment() {
 
         cartViewModel.bookRemoved.observe(this, Observer { bookRemoved ->
             if (bookRemoved){
-                Snackbar.make(requireView(),R.string.book_removed, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(), R.string.book_removed, Snackbar.LENGTH_SHORT).show()
                 cartViewModel.bookRemoved()
             }
         })
 
         return cartBinding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.home ->{
+                activity?.onBackPressed()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

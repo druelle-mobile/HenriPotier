@@ -12,6 +12,8 @@
     <color name="white">#ffffff</color>
     <color name="colorSecondaryText">#000000</color>
     <color name="black">#000000</color>
+    <color name="grey">#8D8D8D</color>
 
+    <color name="translucent">#00000000</color>
 
 </resources>
