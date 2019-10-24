@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="datacontext"
             type="ovh.geoffrey_druelle.henripotier.ui.splashScreen.SplashScreenViewModel" />
@@ -26,12 +27,13 @@
 
         <TextView
             android:id="@+id/textview_version"
-            style="@style/SummaryStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin8"
+            android:padding="@dimen/padding8"
             android:text='@{"Version "+datacontext.version}'
             android:textColor="@color/white"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

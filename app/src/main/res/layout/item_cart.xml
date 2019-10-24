@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="datacontext"
             type="ovh.geoffrey_druelle.henripotier.ui.cart.CartViewModel" />
@@ -38,12 +38,13 @@
 
             <TextView
                 android:id="@+id/textview_title"
-                style="@style/TitleStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="2"
                 android:text="@{itemCart.title}"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/imageview_cover"
                 app:layout_constraintRight_toLeftOf="@id/textview_price"
@@ -52,15 +53,16 @@
 
             <TextView
                 android:id="@+id/textview_price"
-                style="@style/PriceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin16"
                 android:layout_marginEnd="@dimen/margin8"
                 android:text="@{String.format(@string/price_in_euros,itemCart.price)}"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/textview_title"
                 app:layout_constraintRight_toLeftOf="@id/imageview_remove_cart"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="70€" />
 
             <ImageButton
@@ -68,9 +70,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/margin8"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/translucent"
                 android:onClick="@{() -> datacontext.removeFromCart(itemCart)}"
-                android:src="@drawable/ic_remove_shopping_cart_black_24dp"
+                android:src="@drawable/ic_remove_shopping_cart_accent_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/textview_price"
                 app:layout_constraintRight_toRightOf="parent"

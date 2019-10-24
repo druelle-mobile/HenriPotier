@@ -24,18 +24,20 @@
 
             <TextView
                 android:id="@+id/textview_price"
-                style="@style/PriceStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="70€" />
 
             <TextView
                 android:id="@+id/textview_summary"
-                style="@style/SummaryStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding8"
+                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageview_cover"

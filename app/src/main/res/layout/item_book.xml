@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="datacontext"
             type="ovh.geoffrey_druelle.henripotier.ui.books.BooksViewModel" />
@@ -27,22 +28,23 @@
             <ImageView
                 android:id="@+id/imageview_cover"
                 coverBooks="@{itemBook.cover}"
-                tools:src="@drawable/ic_broken_image_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_broken_image_black_24dp" />
 
             <TextView
                 android:id="@+id/textview_title"
-                style="@style/TitleStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:lines="2"
                 android:text="@{itemBook.title}"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/imageview_cover"
                 app:layout_constraintRight_toLeftOf="@id/imageview_cart"
@@ -51,11 +53,12 @@
 
             <TextView
                 android:id="@+id/textview_price"
-                style="@style/PriceStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin8"
                 android:text="@{String.format(@string/price_in_euros,itemBook.price)}"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toTopOf="@id/imageview_cart"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -66,13 +69,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/margin8"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/translucent"
                 android:onClick="@{() -> datacontext.addToCart(itemBook)}"
-                android:src="@drawable/ic_add_shopping_cart_purple_24dp"
-                tools:src="@drawable/ic_add_shopping_cart_purple_24dp"
+                android:src="@drawable/ic_add_shopping_cart_accent_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_price"/>
+                app:layout_constraintTop_toBottomOf="@id/textview_price"
+                tools:src="@drawable/ic_add_shopping_cart_accent_24dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
