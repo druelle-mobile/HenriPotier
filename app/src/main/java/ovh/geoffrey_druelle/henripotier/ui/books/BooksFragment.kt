@@ -58,6 +58,10 @@ class BooksFragment : Fragment() {
                 navigateToCart()
                 true
             }
+            R.id.auth -> {
+                navigateToAuthentication()
+                true
+            }
             R.id.about -> {
                 navigateToInformations()
                 true
@@ -65,6 +69,10 @@ class BooksFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    private fun navigateToAuthentication() {
+        val action = R.id.action_booksFragment_to_loginFragment
+        NavHostFragment.findNavController(this).navigate(action)    }
 
     private fun navigateToInformations() {
         val action = R.id.action_booksFragment_to_informationsFragment

@@ -18,4 +18,8 @@
     <string name="gd">Geoffrey Druelle</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="light_mode">Light Mode</string>
+    <string name="about">A propos</string>
+    <string name="sign_in">Connexion</string>
+    <string name="sign_up">Inscription</string>
+    <string name="auth">Identification</string>
 </resources>

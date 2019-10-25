@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 import ovh.geoffrey_druelle.henripotier.R
+import ovh.geoffrey_druelle.henripotier.databinding.LoginFragmentBinding
 
 class LoginFragment : Fragment() {
 
@@ -16,12 +19,26 @@ class LoginFragment : Fragment() {
     }
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: LoginFragmentBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.login_fragment,
+            container,
+            false
+        )
+
+        viewModel = getViewModel()
+        binding.datacontext = viewModel
+        binding.lifecycleOwner = this
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

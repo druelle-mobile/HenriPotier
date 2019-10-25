@@ -7,8 +7,13 @@
         android:icon="@drawable/ic_shopping_cart_white_24dp"
         app:showAsAction="always"/>
     <item
+        android:id="@+id/auth"
+        android:title="@string/auth"
+        android:icon="@drawable/ic_perm_identity_white_24dp"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/about"
-        android:title="A propos"
+        android:title="@string/about"
         android:icon="@drawable/ic_info_white_24dp"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 </menu>
