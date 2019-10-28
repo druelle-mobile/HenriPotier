@@ -14,6 +14,7 @@ import ovh.geoffrey_druelle.henripotier.data.model.Offers
 import ovh.geoffrey_druelle.henripotier.network.HPApi
 import ovh.geoffrey_druelle.henripotier.utils.LogsUtils
 import java.util.concurrent.Executors
+import kotlin.math.max
 
 private val TAG = CartViewModel::class.java.name
 
@@ -88,7 +89,14 @@ class CartViewModel(private val api: HPApi) : BaseViewModel() {
                 offers = it
                 reduces = 0
 
-                for (offer in offers.offers) parseOffer(offer)
+                var bestReduce = 0
+                for (offer in offers.offers) {
+                    bestReduce = max(
+                        bestReduce,
+                        parseOffer(offer)
+                    )
+                }
+                _totalReduces.value = bestReduce
 
                 fixPriceAfterReduces()
             }, {
@@ -96,14 +104,24 @@ class CartViewModel(private val api: HPApi) : BaseViewModel() {
             })
     }
 
-    private fun parseOffer(offer: Offer) {
-        reduces += when (offer.type) {
-            "percentage" -> percentageValue(offer.value, _priceBeforeReduces)
-            "minus" -> offer.value
-            "slice" -> sliceValue(offer, _priceBeforeReduces)
-            else -> _totalReduces.value!!
+    private fun parseOffer(offer: Offer): Int {
+//        reduces += when (offer.type) {
+//            "percentage" -> percentageValue(offer.value, _priceBeforeReduces)
+//            "minus" -> offer.value
+//            "slice" -> sliceValue(offer, _priceBeforeReduces)
+//            else -> _totalReduces.value!!
+//        }
+//        _totalReduces.value = reduces
+
+        var reduce = 0
+
+        when (offer.type) {
+            "percentage" -> reduce = percentageValue(offer.value, _priceBeforeReduces)
+            "minus" -> reduce = offer.value
+            "slice" -> reduce = sliceValue(offer, _priceBeforeReduces)
+            else -> reduce = 0
         }
-        _totalReduces.value = reduces
+        return reduce
     }
 
     private fun sliceValue(offer: Offer, _priceBeforeReduces: MutableLiveData<Int>): Int {

@@ -26,7 +26,6 @@ class HenriPotierApplication : Application() {
 
         startKoin {
             androidContext(this@HenriPotierApplication)
-//            modules(appModule)
             modules(getModules())
         }
     }
