@@ -105,15 +105,7 @@ class CartViewModel(private val api: HPApi) : BaseViewModel() {
     }
 
     private fun parseOffer(offer: Offer): Int {
-//        reduces += when (offer.type) {
-//            "percentage" -> percentageValue(offer.value, _priceBeforeReduces)
-//            "minus" -> offer.value
-//            "slice" -> sliceValue(offer, _priceBeforeReduces)
-//            else -> _totalReduces.value!!
-//        }
-//        _totalReduces.value = reduces
-
-        var reduce = 0
+        val reduce: Int
 
         when (offer.type) {
             "percentage" -> reduce = percentageValue(offer.value, _priceBeforeReduces)
