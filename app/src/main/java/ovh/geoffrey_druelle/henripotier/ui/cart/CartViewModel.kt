@@ -86,25 +86,33 @@ class CartViewModel(private val api: HPApi) : BaseViewModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                offers = it
-                reduces = 0
-
-                var bestReduce = 0
-                for (offer in offers.offers) {
-                    bestReduce = max(
-                        bestReduce,
-                        parseOffer(offer)
-                    )
-                }
-                _totalReduces.value = bestReduce
-
-                fixPriceAfterReduces()
+                _totalReduces.value = findBestOffer(it,_priceBeforeReduces)
+                _priceAfterReduces.postValue(
+                    fixPriceAfterReduces(_totalReduces, _priceBeforeReduces)
+                )
             }, {
                 LogsUtils.e("${TAG} - Error : ", it as Exception)
             })
     }
 
-    private fun parseOffer(offer: Offer): Int {
+    fun findBestOffer(
+        offers: Offers,
+        _priceBeforeReduces: MutableLiveData<Int>
+    ): Int {
+        reduces = 0
+
+        var bestReduce = 0
+        for (offer in offers.offers) {
+            bestReduce = max(
+                bestReduce,
+                parseOffer(offer, _priceBeforeReduces)
+            )
+        }
+
+        return bestReduce
+    }
+
+    fun parseOffer(offer: Offer, _priceBeforeReduces: MutableLiveData<Int>): Int {
         val reduce: Int
 
         when (offer.type) {
@@ -116,17 +124,19 @@ class CartViewModel(private val api: HPApi) : BaseViewModel() {
         return reduce
     }
 
-    private fun sliceValue(offer: Offer, _priceBeforeReduces: MutableLiveData<Int>): Int {
+    fun sliceValue(offer: Offer, _priceBeforeReduces: MutableLiveData<Int>): Int {
         return (_priceBeforeReduces.value!!.div(offer.sliceValue)) * offer.value
     }
 
-    private fun percentageValue(value: Int, _priceBeforeReduces: MutableLiveData<Int>): Int {
+    fun percentageValue(value: Int, _priceBeforeReduces: MutableLiveData<Int>): Int {
         return _priceBeforeReduces.value?.times(value)!!.div(100)
     }
 
-    private fun fixPriceAfterReduces() {
-        val finalPrice = _priceBeforeReduces.value!!.minus(_totalReduces.value!!)
-        _priceAfterReduces.postValue(finalPrice)
+    fun fixPriceAfterReduces(
+        _totalReduces: MutableLiveData<Int>,
+        _priceBeforeReduces: MutableLiveData<Int>
+    ): Int {
+        return _priceBeforeReduces.value!!.minus(_totalReduces.value!!)
     }
 
     fun removeFromCart(cartItem: Cart) {

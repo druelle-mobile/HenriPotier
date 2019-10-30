@@ -55,11 +55,11 @@ fun provideDefaultOkHttpClient(): OkHttpClient {
 }
 
 fun apiInterceptor() = Interceptor { chain ->
-    chain.proceed(chain.request().newBuilder()
-        .header("User-Agent","HenriPotier")
-        .header("Accept", "application/json")
-        .header("Content-Type", "application/json")
-        .build())
+        chain.proceed(chain.request().newBuilder()
+            .header("User-Agent","HenriPotier")
+            .header("Accept", "application/json")
+            .header("Content-Type", "application/json")
+            .build())
 }
 
 fun provideRetrofit(client: OkHttpClient): Retrofit {
