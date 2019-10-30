@@ -3,6 +3,7 @@ package ovh.geoffrey_druelle.henripotier
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
 import com.facebook.stetho.Stetho
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -22,12 +23,17 @@ class HenriPotierApplication : Application() {
         appContext = applicationContext
         instance = this
 
-        Stetho.initializeWithDefaults(appContext)
+        if (!isRoboUnitTest()) Stetho.initializeWithDefaults(appContext)
+
 
         startKoin {
             androidContext(this@HenriPotierApplication)
             modules(getModules())
         }
+    }
+
+    private fun isRoboUnitTest(): Boolean {
+        return "robolectric" == Build.FINGERPRINT
     }
 
     fun getVersionNumber(): String {
